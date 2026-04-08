@@ -76,7 +76,7 @@ params.forEach((value, key) => {
     targetUrl.searchParams.append(key, value);
   });
 
-window.open(targetUrl, '_blank', 'noopener,noreferrer');
+window.open(targetUrl, '_self');
       // You can also hide the button after click if desired:
       button.classList.remove("visible");
       
