@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+.preview {
+  margin-top: 30px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+#previewArea {
+  margin-top: 15px;
+  max-height: 600px;
+  overflow: auto;
+  border: 1px dashed #ccc;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+#previewArea img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  margin-top: 30px;
+  background: #e8f4fc;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 5px solid #3498db;
+  font-size: 14px;
+}
+
+.info p {
+  margin: 5px 0;
+}
