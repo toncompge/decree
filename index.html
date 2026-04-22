@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Desktop Screen Capture — Web App</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📸 Desktop Screen Capture</h1>
+
+    <div class="controls">
+      <!-- Button to capture full screen (with source selection) -->
+      <button id="captureBtn">Capture Full Screen</button>
+      
+      <!-- Button to capture entire webpage using html2canvas -->
+      <button id="capturePageBtn">Capture Full Page</button>
+    </div>
+
+    <div class="preview">
+      <h2>Preview</h2>
+      <div id="previewArea">
+        <p>Screen capture will appear here...</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <p>💡 <strong>Tip:</strong> Click a button, select a screen source (entire screen, window, tab), and get a high-quality screenshot.</p>
+    </div>
+  </div>
+
+  <!-- Load external libraries -->
+  <!-- html2canvas: for capturing full web page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="script1.js"></script>
+</body>
+</html>
